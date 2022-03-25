@@ -43,9 +43,6 @@ export default {
             signaturePublicId: params.signature_public_id
         }
   },
-  mounted(){
-    console.log(this.pdfLink)
-  },
   computed:{
     pdfLink(){
       return this.$cloudinary.image.url(
