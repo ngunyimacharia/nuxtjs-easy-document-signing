@@ -4,8 +4,8 @@
       <img :src="imageUrl" height="800" width="600"/>
       <canvas id="signature-pad" height="800" width="600"></canvas>
     </div>
-    <button id="save">Save</button>
-    <button id="clear">Clear</button>
+    <button @click="save">Save</button>
+    <button @click="clear">Clear</button>
   </section>
 </template>
 
@@ -17,31 +17,37 @@ export default {
   name: 'IndexPage',
   data(){
     return {
+      signaturePad:null,
       pdf:{
         publicId: 'nuxtjs-easy-document-signing/sample/DuckDuckGo_Privacy_simplified'
       }
     }
   },
   mounted(){
-    var signaturePad = new SignaturePad(document.getElementById('signature-pad'));
-    var saveButton = document.getElementById('save');
-    var cancelButton = document.getElementById('clear');
-
-    saveButton.addEventListener('click', function (event) {
-      var data = signaturePad.toDataURL('image/png');
-
-    // Send data to server instead...
-      window.open(data);
-    });
-
-    cancelButton.addEventListener('click', function (event) {
-      signaturePad.clear();
-    });
+    this.initializePad();
   },
   computed:{
     imageUrl(){
       return this.$cloudinary.image
                 .url(this.pdf.publicId);
+    }
+  },
+  methods:{
+    initializePad(){
+      this.signaturePad = new SignaturePad(document.getElementById('signature-pad'));
+    },
+    async save(){
+        var data = this.signaturePad.toDataURL('image/png');
+
+        const instance = await this.$cloudinary.upload(data, {
+          folder: 'nuxtjs-easy-document-signing',
+          upload_preset: "default-preset",
+        });
+
+        console.log(instance);
+    },
+    clear(){
+        this.signaturePad.clear();
     }
   }
 }
