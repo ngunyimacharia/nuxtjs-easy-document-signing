@@ -10,7 +10,7 @@
     <div class="text-center">
         <cld-image class="mx-auto" :public-id="imagePublicId" height="800" width="600">
             <cld-transformation
-                :overlay="signaturePublicId.replaceAll('/', ':')"
+                :overlay="signaturePublicId.replace(/\//g, ':')"
             />
         </cld-image>
     </div>
@@ -26,11 +26,6 @@ export default {
             imagePublicId: params.image_public_id,
             signaturePublicId: params.signature_public_id
         }
-  },
-  data(){
-    return {
-        
-    }
-  },
+  }
 }
 </script>
