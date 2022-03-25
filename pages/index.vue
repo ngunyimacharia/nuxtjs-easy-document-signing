@@ -28,7 +28,7 @@
         <div class="bg-white py-6 px-4 space-y-6 sm:p-6 text-center">
             <h3 class="text-lg leading-6 font-medium text-gray-900">Use pre-loaded PDF</h3>
             <p class="mt-1 text-sm text-gray-500">Click here to proceed with an already existing PDF</p>
-            <cld-image :public-id="samplePdf" class="mx-auto" width="200" height="200" />
+            <cld-image :public-id="sampleDocPublicId" class="mx-auto" width="200" height="200" />
         </div>
       </div>
     </div>

@@ -78,7 +78,7 @@ export default {
 
         console.log(signatureCloudinaryInstance)
 
-        this.$router.push(`/sign/${encodeURIComponent(this.imagePublicId)}/preview/${encodeURIComponent(signatureCloudinaryInstance.public_id)}` )
+        this.$router.push(`/preview/${encodeURIComponent(this.imagePublicId)}/${encodeURIComponent(signatureCloudinaryInstance.public_id)}` )
     },
     clear(){
         this.signaturePad.clear();
