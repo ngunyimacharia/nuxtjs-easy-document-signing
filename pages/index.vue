@@ -64,10 +64,10 @@ export default {
         folder: "nuxtjs-easy-document-signing",
       });
       this.uploading = false;
-      this.$router.push(`/sign?image_public_id=${this.cloudinaryFile.public_id}` )
+      this.$router.push(`/sign/${encodeURIComponent(this.cloudinaryFile.public_id)}` )
     },
     useSample(){
-      this.$router.push(`/sign?image_public_id=${this.sampleDocPublicId}` )
+      this.$router.push(`/sign/${encodeURIComponent(this.sampleDocPublicId)}` )
     }
   }
 }

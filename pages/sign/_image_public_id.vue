@@ -14,13 +14,14 @@
 import SignaturePad from "signature_pad";
 
 export default {
-  name: 'IndexPage',
+   asyncData ({ params }) {
+    return {
+       imagePublicId: params.image_public_id
+    }
+  },
   data(){
     return {
       signaturePad:null,
-      pdf:{
-        publicId: 'nuxtjs-easy-document-signing/sample/DuckDuckGo_Privacy_simplified'
-      }
     }
   },
   mounted(){
@@ -28,8 +29,7 @@ export default {
   },
   computed:{
     imageUrl(){
-      return this.$cloudinary.image
-                .url(this.pdf.publicId);
+      return this.$cloudinary.image.url(this.imagePublicId);
     }
   },
   methods:{
