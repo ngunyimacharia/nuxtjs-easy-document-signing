@@ -76,8 +76,6 @@ export default {
           upload_preset: "default-preset",
         });
 
-        console.log(signatureCloudinaryInstance)
-
         this.$router.push(`/preview/${encodeURIComponent(this.imagePublicId)}/${encodeURIComponent(signatureCloudinaryInstance.public_id)}` )
     },
     clear(){
