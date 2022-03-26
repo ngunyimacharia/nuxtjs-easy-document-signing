@@ -89,6 +89,7 @@ export default {
 .sign-container{
   width:100vw;
   height:100vh;
+  min-height: 800px;
 }
 .sign-container .wrapper{
   height:800px;
